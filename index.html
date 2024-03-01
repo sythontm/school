@@ -1,0 +1,216 @@
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>إعدادية الوركاء</title>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+  padding: 20px 0;
+}
+
+form {
+  max-width: 290px;
+  border: 3px solid #5cb85c;
+  margin: 0 auto;
+  padding: 20px;
+  
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="text"], select {
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+  
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+input[type="button"] {
+  background-color: #5cb85c;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: 60%;
+  border-radius: 15px;
+}
+
+input[type="button"]:hover {
+  background-color: #449d44;
+  
+  
+}
+
+#links {
+  max-width: 290px;
+  border: 3px solid #5cb85c;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 15px;
+}
+
+#telegram {
+  max-width: 290px;
+  border: 3px solid #5cb85c;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+  border-radius: 15px;
+}
+
+#telegram input[type="text"] {
+  width: 60%;
+}
+
+#telegram input[type="button"] {
+  width: 60%;
+  display: block;
+  margin: 20px auto;
+}
+
+#admin {
+  max-width: 290px;
+  border: 3px solid #5cb85c;
+  margin: 20px auto;
+  padding: 5px;
+  background-color: #5cb85c;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+  border-radius: 15px;
+}
+
+#admin input[type="text"] {
+  width: 50%;
+}
+
+#admin input[type="button"] {
+  width: 60%;
+  display: block;
+  margin: 20px auto;
+}
+</style>
+<script>
+
+var bot_token = "6111107019:AAFB6C-sJJLHRzAridsqlokvFUrI1ti7CDU";
+var chat_id = "5159123009";
+
+function sendMessage() {
+  var message = document.getElementById("message").value;
+  if (message == "الألوان") {
+    showColors();
+  } else {
+    var url = "https://api.telegram.org/bot" + bot_token + "/sendMessage?chat_id=" + chat_id + "&text=" + message;
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.send();
+    alert("تم إرسال الرسالة");
+  }
+}
+
+function showLinks() {
+  var name = document.getElementById("name").value;
+  var grade = document.getElementById("grade").value;
+  var links = document.getElementById("links");
+  links.innerHTML = "";
+  if (name && grade) {
+    links.innerHTML = "<p>مرحبا " + name + ", هذه بعض الروابط المفيدة لمرحلتك الدراسية:</p>";
+    if (grade == "الرابع") {
+      links.innerHTML += "<p>المادة: رياضيات</p><a href='https://www.example.com/grade4/math'>انقر هنا للذهاب إلى الرابط</a><br>";
+      links.innerHTML += "<p>المادة: علوم</p><a href='https://www.example.com/grade4/science'>انقر هنا للذهاب إلى الرابط</a><br>";
+      links.innerHTML += "<p>المادة: لغة عربية</p><a href='https://www.example.com/grade4/arabic'>انقر هنا للذهاب إلى الرابط</a><br>";
+    } else if (grade == "الخامس") {
+      links.innerHTML += "<p>المادة: رياضيات</p><a href='https://www.example.com/grade5/math'>انقر هنا للذهاب إلى الرابط</a><br>";
+      links.innerHTML += "<p>المادة: علوم</p><a href='https://www.example.com/grade5/science'>انقر هنا للذهاب إلى الرابط</a><br>";
+      links.innerHTML += "<p>المادة: لغة عربية</p><a href='https://www.example.com/grade5/arabic'>انقر هنا للذهاب إلى الرابط</a><br>";
+    } else if (grade == "السادس") {
+      links.innerHTML += "<p>المادة: رياضيات</p><a href='https://www.example.com/grade6/math'>انقر هنا للذهاب إلى الرابط</a><br>";
+      links.innerHTML += "<p>المادة: علوم</p><a href='https://www.example.com/grade6/science'>انقر هنا للذهاب إلى الرابط</a><br>";
+      links.innerHTML += "<p>المادة: لغة عربية</p><a href='https://www.example.com/grade6/arabic'>انقر هنا للذهاب إلى الرابط</a><br>";
+    } else {
+      links.innerHTML = "<p>الرجاء اختيار مرحلة دراسية صحيحة</p>";
+    }
+  } else {
+    links.innerHTML = "<p>الرجاء إدخال اسمك ومرحلتك الدراسية</p>";
+  }
+}
+
+function showColors() {
+  var links = document.getElementById("links");
+  links.innerHTML = "<p>اختر لونا:</p>";
+  var colors = ["Red", "Blue", "Green", "Yellow", "Orange", "Purple"];
+  for (var i = 0; i < colors.length; i++) {
+    links.innerHTML += "<button style='background-color: " + colors[i] + "; color: white; margin: 10px; padding: 10px; border-radius: 15px;' onclick='changeColor(\"" + colors[i] + "\")'>" + colors[i] + "</button>";
+  }
+}
+
+function changeColor(color) {
+  var buttons = document.getElementsByTagName("input");
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].type == "button") {
+      buttons[i].style.backgroundColor = color;
+      buttons[i].style.borderColor = color;
+    }
+  }
+  
+  var elements = document.querySelectorAll("form, #links, #telegram, #admin");
+  for (var i = 0; i < elements.length; i++) {
+    elements[i].style.borderColor = color;
+  }
+}
+
+
+function adminCommand() {
+  var command = document.getElementById("command").value;
+  if (command == "الألوان") {
+    showColors();
+  }
+}
+</script>
+</head>
+<body>
+<h1>• اعدادية الوركاء للبنين •</h1>
+<form>
+  <label for="name">الاسم:</label>
+  <input type="text" id="name" name="name"><br>
+  <label for="grade">المرحلة الدراسية:</label>
+  <select id="grade" name="grade">
+    <option value="">اختر</option>
+    <option value="الرابع">الرابع</option>
+    <option value="الخامس">الخامس</option>
+    <option value="السادس">السادس</option>
+  </select><br>
+  <input type="button" value="إظهار الروابط" onclick="showLinks()">
+</form>
+<div id="links"></div>
+<div id="telegram">
+  <label for="message">أدخل رسالتك:</label>
+  <input type="text" id="message" name="message" placeholder="أدخل رسالتك هنا"><br>
+  <input type="button" value="إرسال الرسالة" onclick="sendMessage()">
+</div>
+<div id="admin">
+
+</body>
+</html>
